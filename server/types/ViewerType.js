@@ -1,50 +1,47 @@
 import {
   GraphQLObjectType,
-  GraphQLString,
-  GraphQLInt,
-  GraphQLList,
-  GraphQLNonNull
+  GraphQLString
 } from 'graphql';
 import {
   globalIdField,
-  connectionDefinitions,
-  connectionArgs
+  connectionDefinitions
 } from 'graphql-relay';
-import {connectionFromMongooseCursor} from 'lib/mongooseConnection';
-import node from '../node';
+import { connectionFromMongooseCursor } from 'lib/mongooseConnection';
+import { nodeInterface } from '../node';
 import Property from 'models/Property';
+import PropertyType from 'types/PropertyType';
+import { registerType } from 'lib/registry';
 
-const {connectionType: PropertyConnection} =
-    connectionDefinitions({nodeType: PropertyType});
+const {connectionType: PropertyConnection} = connectionDefinitions({nodeType: PropertyType});
 
-export const ViewerType = new GraphQLObjectType({
+const ViewerType = new GraphQLObjectType({
   name: 'Viewer',
-  interfaces: [node.interface],
+  interfaces: [nodeInterface],
   fields: () => ({
     id: globalIdField('Viewer'),
-    name: {type: GraphQLString},
+    name: { type: GraphQLString },
     properties: {
       type: PropertyConnection,
       resolve: (root, args) => {
         return connectionFromMongooseCursor(
-          Property.sort({create_date: -1}),
+          Property.where({}).sort({ create_date: -1 }),
           args
         );
       }
     }
-
   })
 });
 
-export const getViewer = (id: ?number) => {
+export const getViewer = (id) => {
   return {
     id: 1,
     name: 'Ganesh'
-  }
+  };
 };
 
-export const Viewer = {
+export const ViewerQuery = {
   type: ViewerType,
-  interfaces: [node.interface],
   resolve: () => getViewer()
-}
+};
+
+export default registerType(ViewerType, getViewer);

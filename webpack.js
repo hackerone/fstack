@@ -16,11 +16,11 @@ module.exports = {
     entry: [
         'eventsource-polyfill',
         'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
-        './client/app.js'
+        path.join(__dirname, 'client/app.js')
     ],
     output: {
         path: path.join(__dirname),
-        publicPath: '/src/',
+        publicPath: '/client/',
         filename: 'app.js',
         hot: true
     },
@@ -35,7 +35,7 @@ module.exports = {
     ],
     postcss: function(webpack) {
         const importer = postCssImport({
-            path: ['./src/styles']
+            path: ['./app/styles']
         });
         return [autoprefixer];
     },
@@ -51,22 +51,9 @@ module.exports = {
         ]
     },
     resolve: {
-        root: path.resolve(__dirname,'./src'),
-        modulesDirectory: [path.resolve(__dirname,'./src/styles')],
+        root: path.resolve(__dirname, 'node_modules'),
+        modulesDirectory: [path.resolve(__dirname,'./node_modules'), ],
         extensions: ['', '.js', '.json', '.scss', '.css'],
         packageMains: ['browser', 'web', 'browserify', 'main', 'style']
-    },
-    devServer: {
-      proxy: {
-        '/graphql' : {
-          target: 'http://localhost:9000'
-        },
-        '/login?*' : {
-          target: 'http://localhost:9000'
-        },
-        '/user' : {
-          target: 'http://localhost:9000'
-        }
-      }
     }
-};
+  };

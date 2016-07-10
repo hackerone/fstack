@@ -4,13 +4,13 @@
     "syntax-flow",
     "transform-flow-strip-types",
     ["module-alias", [
-      { "src": "server/models", "expose": "models" },
-      { "src": "server/types", "expose": "types" },
-      { "src": "server/mutations", "expose": "mutations" },
-      { "src": "server/lib", "expose": "lib" },
+      { "src": "./server/models", "expose": "models" },
+      { "src": "./server/types", "expose": "types" },
+      { "src": "./server/mutations", "expose": "mutations" },
+      { "src": "./server/lib", "expose": "lib" },
       { "src": "./", "expose": "~" },
-      { "src": "server", "expose": "server" },
-      { "src": "client", "expose": "client" }
+      { "src": "./server", "expose": "server" },
+      { "src": "./client", "expose": "client" }
     ]]
   ]
 }

@@ -5,16 +5,16 @@
   "author": "Ganesh <hackerone@gmail.com>",
   "main": "src/server.js",
   "scripts": {
-    "start": "babel-node ./server/index.js",
+    "start": "nodemon start.js",
     "test": "mocha --compilers js:babel-register",
     "test-watch": "mocha"
   },
   "license": "ISC",
   "devDependencies": {
-    "//": "*** client side deps below ***",
     "assert": "^1.4.1",
+    "autoprefixer": "^6.3.7",
     "babel-cli": "^6.10.1",
-    "babel-core": "^6.5.2",
+    "babel-core": "^6.10.4",
     "babel-eslint": "^5.0.4",
     "babel-loader": "^6.2.4",
     "babel-plugin-module-alias": "^1.4.0",
@@ -61,7 +61,6 @@
     "webpack-hot-middleware": "^2.12.1"
   },
   "dependencies": {
-    "aws-sdk": "^2.4.2",
     "babel-register": "^6.9.0",
     "bluebird": "^3.4.1",
     "body-parser": "^1.15.1",
@@ -75,6 +74,7 @@
     "graph.ql": "^2.0.0",
     "graphql": "^0.6.0",
     "graphql-custom-types": "^0.4.0",
+    "graphql-relay": "^0.4.2",
     "hogan": "^1.0.2",
     "isomorphic-fetch": "^2.2.1",
     "mongoose": "^4.5.3",
@@ -82,16 +82,15 @@
     "passport-facebook": "^2.1.1",
     "passport-google-oauth": "^1.0.0",
     "passport-local": "^1.0.0",
-    "relay-mongodb-connection": "^1.0.0",
-    "request": "^2.73.0",
-    "shortid": "^2.2.6",
-    "source-map-support": "^0.4.0",
-    "//": "*** client side deps below ***",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-relay": "^0.9.0",
     "react-relay-network-layer": "^1.2.0",
     "react-router": "^2.0.0",
-    "react-router-relay": "^0.13.2"
+    "react-router-relay": "^0.13.2",
+    "relay-mongodb-connection": "^1.0.0",
+    "request": "^2.73.0",
+    "shortid": "^2.2.6",
+    "source-map-support": "^0.4.0"
   }
 }

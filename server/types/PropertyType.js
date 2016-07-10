@@ -3,35 +3,37 @@ import {
   GraphQLString,
   GraphQLInt,
   GraphQLList,
-  GraphQLNonNull
 } from 'graphql';
 import {
   globalIdField,
-  connectionDefinitions,
-  connectionArgs
 } from 'graphql-relay';
-import {connectionFromMongooseCursor} from 'lib/mongooseConnection';
-import node from '../node';
+import { nodeInterface } from '../node';
+import Property from 'models/Property';
+import { registerType } from 'lib/registry';
 
-export const PropertyType = new GraphQLObjectType({
+const PropertyType = new GraphQLObjectType({
   name: 'Property',
-  interfaces: [node.interface],
+  interfaces: [nodeInterface],
   fields: () => ({
     id: globalIdField('Property'),
-    name: {type: GraphQLString},
-
+    title: { type: GraphQLString },
+    summary: { type: GraphQLString },
+    description: { type: GraphQLString },
+    type: { type: GraphQLString },
+    price: { type: GraphQLInt },
+    feesApply: { type: GraphQLString },
+    distance: { type: GraphQLString },
+    images: { type: new GraphQLList(GraphQLString) },
+    availableDate: { type: GraphQLString },
+    propertyUrl: { type: GraphQLString },
+    create_date: { type: GraphQLString },
   })
 });
 
-export const getProperty = (id: ?number) => {
-  return {
-    id: 1,
-    name: 'Ganesh'
-  }
+export const getProperty = (id) => {
+  return Property.findOne({
+    _id: id
+  });
 };
 
-export const Property = {
-  type: PropertyType,
-  interfaces: [node.interface],
-  resolve: () => getProperty()
-}
+export default registerType(PropertyType, getProperty);

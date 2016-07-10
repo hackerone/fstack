@@ -1,12 +1,13 @@
 import { GraphQLSchema, GraphQLObjectType } from 'graphql';
-import { viewer } from 'types/ViewerType';
-import node from './node';
+import { ViewerQuery } from 'types/ViewerType';
+import { nodeField } from './node';
 
 const Schema = new GraphQLSchema({
   'query': new GraphQLObjectType({
     name: 'Query',
     fields: {
-      viewer
+      viewer: ViewerQuery,
+      node: nodeField
     }
   })
 });

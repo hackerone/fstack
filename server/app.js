@@ -2,10 +2,9 @@ import graphqlHTTP from 'express-graphql';
 import express from 'express';
 import 'babel-polyfill';
 import Schema from './schema';
-import passport from 'lib/passport';
-
-
 import expressSession from 'express-session';
+import fs from 'fs';
+import path from 'path';
 
 const app = express();
 
@@ -14,23 +13,6 @@ app.use(expressSession({
   resave: true,
   saveUninitialized: true
 }));
-app.use(passport.initialize());
-app.use(passport.session());
-
-app.use(function (req, res, next) {
-  console.log(req.user);
-  next();
-});
-
-app.get('/login', passport.authenticate('local', {
-  successRedirect: '/user'
-}));
-
-app.get('/user', function (req, res) {
-  res.json({
-    user: req.user
-  })
-})
 
 app.use('/graphql', graphqlHTTP(req => ({
   schema: Schema,
@@ -40,5 +22,11 @@ app.use('/graphql', graphqlHTTP(req => ({
   },
   graphiql: true
 })));
+
+app.get('/', (req, res) => {
+  fs.readFile(path.join(__dirname, 'views', 'index.html'), 'utf8', (err, data) => {
+    res.send(data);
+  });
+});
 
 export default app;
