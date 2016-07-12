@@ -11,22 +11,16 @@ const app = express();
 app.use(expressSession({
   secret: 'tomriddle',
   resave: true,
-  saveUninitialized: true
+  saveUninitialized: true,
 }));
 
 app.use('/graphql', graphqlHTTP(req => ({
   schema: Schema,
   rootValue: {
     user_id: req.user && req.user.id,
-    user: req.user
+    user: req.user,
   },
-  graphiql: true
+  graphiql: true,
 })));
-
-app.get('/', (req, res) => {
-  fs.readFile(path.join(__dirname, 'views', 'index.html'), 'utf8', (err, data) => {
-    res.send(data);
-  });
-});
 
 export default app;

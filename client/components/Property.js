@@ -12,7 +12,7 @@ const Property = (prop) => {
         <div>£{property.price}</div>
         <a className={styles.link} href={'http://www.rightmove.co.uk/'+property.propertyUrl} target='_blank'>ref: {property.rightmoveId}</a>
       </div>
-      <div>{property.summary}</div>
+      <div className={styles.desc}>{property.description}</div>
     </div>
     <div className={styles.imagesWrap}>
       {property.images.map((src,id) => <img src={src} className={styles.image} key={id} />)}
@@ -26,7 +26,7 @@ const queries = {
       fragment on Property {
         title,
         rightmoveId,
-        summary,
+        description,
         images,
         price,
         propertyUrl,

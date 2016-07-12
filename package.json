@@ -5,11 +5,13 @@
   "author": "Ganesh <hackerone@gmail.com>",
   "main": "src/server.js",
   "scripts": {
-    "start": "nodemon start.js --watch server webpack.js",
+    "dev": "nodemon start-dev.js --watch server webpack.js",
+    "start": "node start-prod.js --production",
     "update-schema": "./node_modules/babel-cli/bin/babel-node.js ./tools/updateSchema.js",
     "update-properties": "./node_modules/babel-cli/bin/babel-node.js ./batch/update.js",
     "test": "mocha --compilers js:babel-register",
-    "test-watch": "mocha"
+    "test-watch": "mocha",
+    "build": "webpack --config webpack.prod.js"
   },
   "license": "ISC",
   "devDependencies": {
@@ -62,7 +64,8 @@
     "sync-request": "^3.0.1",
     "webpack": "^1.13.1",
     "webpack-dev-middleware": "^1.6.1",
-    "webpack-hot-middleware": "^2.12.1"
+    "webpack-hot-middleware": "^2.12.1",
+    "webpack-manifest-plugin": "^1.0.1"
   },
   "dependencies": {
     "babel-register": "^6.9.0",
@@ -83,6 +86,7 @@
     "graphql-relay": "^0.4.2",
     "hogan": "^1.0.2",
     "isomorphic-fetch": "^2.2.1",
+    "manifest-revision-webpack-plugin": "^0.3.0",
     "mongoose": "^4.5.3",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1",

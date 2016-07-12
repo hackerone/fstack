@@ -33,3 +33,7 @@
   height: 150px;
   padding: 5px;
 }
+
+.desc {
+  white-space: pre;
+}
