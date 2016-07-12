@@ -6,10 +6,12 @@ import webpack from 'webpack';
 import app from './app';
 import config from './../webpack.dev';
 
+const indexView = fs.readFileSync( __dirname + '/views/index.html', 'utf8')
+  .replace('[main.js]', cdn + 'app.js')
+  .replace('[main.css]', cdn + 'main.css');
+
 app.get('/', (req, res) => {
-  fs.readFile(path.join(__dirname, 'views', 'index.html'), 'utf8', (err, data) => {
-    res.send(data);
-  });
+  res.send(indexView);
 });
 
 

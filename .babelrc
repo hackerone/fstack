@@ -3,6 +3,7 @@
   "plugins": [
     "syntax-flow",
     "transform-flow-strip-types",
+    "static-fs",
     ["module-alias", [
       { "src": "./server/models", "expose": "models" },
       { "src": "./server/types", "expose": "types" },

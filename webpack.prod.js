@@ -14,7 +14,7 @@ module.exports = {
     path.join(__dirname, 'client/app.js'),
   ],
   output: {
-    path: path.join(__dirname, 'build'),
+    path: path.join(__dirname, 'build/client'),
     filename: '[hash]/app.js',
   },
   plugins: [
