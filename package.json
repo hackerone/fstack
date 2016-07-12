@@ -5,13 +5,13 @@
   "author": "Ganesh <hackerone@gmail.com>",
   "main": "src/server.js",
   "scripts": {
-    "dev": "nodemon start-dev.js --watch server webpack.js",
-    "start": "node start-prod.js --production",
+    "dev": "nodemon start.dev.js --watch server webpack.js",
+    "start": "node start.prod.js --production",
     "update-schema": "./node_modules/babel-cli/bin/babel-node.js ./tools/updateSchema.js",
     "update-properties": "./node_modules/babel-cli/bin/babel-node.js ./batch/update.js",
+    "build": "webpack --config webpack.prod.js",
     "test": "mocha --compilers js:babel-register",
-    "test-watch": "mocha",
-    "build": "webpack --config webpack.prod.js"
+    "test-watch": "mocha"
   },
   "license": "ISC",
   "devDependencies": {
