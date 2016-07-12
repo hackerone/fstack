@@ -1,0 +1,154 @@
+@import 'var';
+
+:global {
+  html {
+    font-size: 10px;
+    margin: 0; padding: 0;
+    height: 100%;
+  }
+
+  body {
+    margin: 0; padding: 0;
+    display: flex;
+    font-size: $font-size;
+    font-family: $font-family;
+    color: $text-color;
+    height: 100%;
+    letter-spacing: 0.5px;
+  }
+
+  a {
+    color: $link-color;
+    text-decoration: none;
+  }
+
+  body > div {
+    flex: 1;
+  }
+
+  p, h1, h2, h3 {
+    margin: 0;
+    padding: $pad/2 0;
+    font-weight: normal;
+  }
+
+  h1, h2, h3 {
+    color: $heading-color;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+  }
+
+  h1 {
+    font-size: $font-size-xl;
+  }
+
+  h2 {
+    font-size: $font-size-lg;
+  }
+
+  h3 {
+    font-size: $font-size-md;
+  }
+
+  h1 + p, h2 + p, h3 + p {
+    padding-top: 0;
+  }
+}
+
+.flex-wrapper {
+  display: flex;
+  height: 100%;
+  align-content: stretch;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+
+.header-wrapper {
+  width: 6rem;
+  border-right: $border;
+}
+
+.header-link {
+  padding: 0 $pad;
+  line-height: 6rem;
+  display: block;
+  text-align: center;
+  color: $header-color;
+  background: $header-bg;
+  border-bottom: $border;
+}
+
+.list-wrapper {
+
+}
+
+.section-wrapper {
+  padding: $pad/2 $pad;
+}
+
+.list-heading {
+  padding: $pad;
+}
+
+.list-item {
+  padding: $pad;
+  border-bottom: $border;
+  display: block;
+}
+
+.list-avatar {
+  display: flex;
+  align-items: center;
+}
+
+.avatar-item {
+  padding-right: $pad;
+}
+
+.form-wrapper {
+  padding: $pad;
+  font-size: $font-size;
+}
+
+.input-wrapper {
+  padding: 0 0 $pad*2 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-el {
+  padding: 0 $pad;
+  line-height: $input-height;
+  border: $border;
+  font-size: $font-size;
+}
+
+.input-el:focus {
+  border-color: $primary-color;
+  outline: none;
+}
+
+.input-el-textarea {
+  padding: $pad/2 $pad;
+  line-height: $input-height*2/3;
+}
+
+.input-label {
+  line-height: $label-height;
+  font-size: $font-size;
+}
+
+.input-button {
+  padding: 0 $pad;
+  line-height: $input-height;
+  font-size: $font-size;
+  border: 0;
+}
+
+.input-button-primary {
+  background: $primary-color;
+  color: white;
+}

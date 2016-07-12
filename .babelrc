@@ -1,5 +1,5 @@
 {
-  "presets": ["es2015", "stage-1", "stage-0"],
+  "presets": ["es2015", "stage-1"],
   "plugins": [
     "syntax-flow",
     "transform-flow-strip-types",
@@ -10,7 +10,9 @@
       { "src": "./server/lib", "expose": "lib" },
       { "src": "./", "expose": "~" },
       { "src": "./server", "expose": "server" },
-      { "src": "./client", "expose": "client" }
+      { "src": "./client", "expose": "client" },
+      { "src": "./client/containers", "expose": "containers" },
+      { "src": "./client/components", "expose": "components" }
     ]]
   ]
 }

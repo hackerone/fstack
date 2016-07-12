@@ -15,6 +15,10 @@ function addProperty(data) {
     return null;
   }
 
+  if(data.displayAddress.toLowerCase().indexOf("share") > -1) {
+    return null;
+  }
+
   if (data.propertyTypeFullDescription.toLowerCase().indexOf("share") > -1 ) {
     return null;
   }

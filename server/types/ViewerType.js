@@ -1,10 +1,11 @@
 import {
   GraphQLObjectType,
-  GraphQLString
+  GraphQLString,
 } from 'graphql';
 import {
   globalIdField,
-  connectionDefinitions
+  connectionDefinitions,
+  connectionArgs,
 } from 'graphql-relay';
 import { connectionFromMongooseCursor } from 'lib/mongooseConnection';
 import { nodeInterface } from '../node';
@@ -22,14 +23,13 @@ const ViewerType = new GraphQLObjectType({
     name: { type: GraphQLString },
     properties: {
       type: PropertyConnection,
-      resolve: (root, args) => {
-        return connectionFromMongooseCursor(
-          Property.where({}).sort({ create_date: -1 }),
-          args
-        );
-      }
-    }
-  })
+      args: { ...connectionArgs },
+      resolve: (root, args) => connectionFromMongooseCursor(
+        Property.where({}).sort({ create_date: -1 }),
+        args
+      ),
+    },
+  }),
 });
 
 export const getViewer = (id) => {

@@ -1,0 +1,35 @@
+@import 'var';
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  page-break-inside: avoid;
+}
+.text {
+  flex: 2;
+}
+
+.meta {
+  font-size: $font-size-md;
+  font-weight: bold;
+  line-height: 1.5;
+  width: 100%;
+  display: flex;
+  div, a {
+    display: block;
+    padding-right: $pad;
+  }
+}
+
+.imagesWrap {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 3;
+  min-width: 100%;
+}
+
+.image {
+  width: auto;
+  height: 150px;
+  padding: 5px;
+}

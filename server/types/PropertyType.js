@@ -17,13 +17,16 @@ const PropertyType = new GraphQLObjectType({
   fields: () => ({
     id: globalIdField('Property'),
     title: { type: GraphQLString },
+    rightmoveId: { type: GraphQLString },
     summary: { type: GraphQLString },
     description: { type: GraphQLString },
     type: { type: GraphQLString },
     price: { type: GraphQLInt },
     feesApply: { type: GraphQLString },
     distance: { type: GraphQLString },
-    images: { type: new GraphQLList(GraphQLString) },
+    images: {
+      type: new GraphQLList(GraphQLString),
+    },
     availableDate: { type: GraphQLString },
     propertyUrl: { type: GraphQLString },
     create_date: { type: GraphQLString },

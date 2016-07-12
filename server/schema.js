@@ -3,13 +3,13 @@ import { ViewerQuery } from 'types/ViewerType';
 import { nodeField } from './node';
 
 const Schema = new GraphQLSchema({
-  'query': new GraphQLObjectType({
+  query: new GraphQLObjectType({
     name: 'Query',
     fields: {
       viewer: ViewerQuery,
-      node: nodeField
-    }
-  })
+      node: nodeField,
+    },
+  }),
 });
 
 export default Schema;

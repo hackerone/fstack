@@ -1,10 +1,8 @@
 import getBabelRelayPlugin from 'babel-relay-plugin';
-import Schema from '~/server/schema';
-import { introspectionQuery } from 'graphql/utilities';
-import graphql from 'graphql';
+import fs from 'fs';
+import path from 'path';
 
-export default graphql(Schema, introspectionQuery).then(result => {
-  return getBabelRelayPlugin(result.data, {
-    abortOnError: true
-  });
-});
+const data = fs.readFileSync(path.join(__dirname, 'schema.json'), 'utf-8');
+const schema = JSON.parse(data);
+
+export default getBabelRelayPlugin(schema.data);

@@ -9,13 +9,18 @@ export const registerType = (type, resolver) => {
   return type;
 };
 
-export const idFetcher = (globalId, info) => {
+export const idFetcher = (globalId) => {
   const { type, id } = fromGlobalId(globalId);
-  if(resolvers[type]) {
-    return resolvers[type].apply(resolvers[type], id);
+  let output = null;
+  if (resolvers[type]) {
+    const result = resolvers[type].apply(null, [id]);
+    if (typeof result === 'function') {
+      output = result.then(resp => Object.assign({}, resp, { type }));
+    } else {
+      output = Object.assign({}, result, { type });
+    }
   }
-}
+  return output;
+};
 
-export const typeResolver = (obj) => {
-  return types[obj.type];
-}
+export const typeResolver = (obj) => types[obj.type];
