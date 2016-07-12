@@ -8,8 +8,6 @@ function getProperties(index) {
     .then(json => json.properties);
 }
 
-
-
 function addProperty(data) {
   if (data.propertySubType == "Studio") {
     return null;
