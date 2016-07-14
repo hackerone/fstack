@@ -7,12 +7,14 @@
   "scripts": {
     "dev": "nodemon start.dev.js --watch server webpack.js",
     "start": "node ./build/server/prod.js",
+    "update-properties": "node ./build/batch/update.js",
     "update-schema": "./node_modules/babel-cli/bin/babel-node.js ./tools/updateSchema.js",
-    "update-properties": "./node_modules/babel-cli/bin/babel-node.js ./batch/update.js",
+    "update-properties-dev": "./node_modules/babel-cli/bin/babel-node.js ./batch/update.js",
+    "clear-build": "rm -rf build/client build/server build/batch",
     "build-client": "webpack --config webpack.prod.js",
-    "build-server": "babel server -d build/server",
-    "build-batch": "babel batch -d build/batch",
-    "build": "npm run build-client && npm run build-server && npm build-batch",
+    "build-server": "./node_modules/babel-cli/bin/babel.js ./server -d build/server",
+    "build-batch": "./node_modules/babel-cli/bin/babel.js ./batch -d build/batch",
+    "build": "npm run clear-build && npm run build-client && npm run build-server && npm run build-batch",
     "test": "mocha --compilers js:babel-register",
     "test-watch": "mocha"
   },

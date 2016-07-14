@@ -1,14 +1,9 @@
 import mongoose from 'mongoose';
 import Promise from 'bluebird';
+import {connectionURL} from 'server/config/config';
+
 mongoose.Promise = Promise;
 
-const DB_NAME = 'prop';
-let db = DB_NAME;
-
-if (process.env.TEST) {
-  db = 'test';
-}
-
-mongoose.connect('mongodb://localhost/' + db);
+mongoose.connect(connectionURL);
 
 export default mongoose;
