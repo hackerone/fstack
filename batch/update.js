@@ -34,8 +34,6 @@ function addProperty(data) {
     originalData: data
   });
 
-
-  console.log("Saving -- "+ data.id);
   return property.save().then(resp => {
     console.log('Saved '+ resp.id);
     return resp;
@@ -52,8 +50,8 @@ function updateProperties(index, timeout) {
     .then(properties => {
       console.log('Fetched '+ properties.length + ' properties.');
       if(properties.length < 10) {
-        console.log('no properties');
         throw new Error('no properties');
+        process.exit();
         return false;
       }
       return properties.map(property => {
@@ -63,7 +61,7 @@ function updateProperties(index, timeout) {
     .then(_ => {
       console.log("Properties saved");
       return Promise.delay(timeout).then(resp => {
-        return updateProperties(index + 25, timeout + 10)
+        return updateProperties(index + 25, timeout + 10);
       });
     })
     .catch(err => {

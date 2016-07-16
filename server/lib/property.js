@@ -26,7 +26,7 @@ export function scrapeProperty(id) {
     });
 
     const html = $($('.sect').get(2)).html();
-    output.html = striptags(html, ['h3','a', 'br']).replace(/\<br[^\>|]*\>/ig, "\n");
+    output.html = striptags(html, ['a', 'br']).replace(/\<br[^\>|]*\>/ig, "\n");
 
     return output;
 
