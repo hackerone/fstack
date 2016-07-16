@@ -4,15 +4,15 @@ import { List, ListItem, Button } from 'client/lib/sink';
 import Property from 'components/Property';
 
 type PropTypes = {
-  viewer: Object
+  viewer: Object,
+  relay: Object
 };
 
 const Home = (props: PropTypes) => {
-
   const loadMore = () => {
     const count = props.relay.variables.count + 10;
     props.relay.setVariables({
-      count: count
+      count,
     });
   };
 
@@ -29,7 +29,7 @@ const Home = (props: PropTypes) => {
 
 const queries = {
   initialVariables: {
-    count: 100,
+    count: 10,
   },
   fragments: {
     viewer: () => Relay.QL `
