@@ -44,7 +44,7 @@ function scrapeProperty(id) {
     });
 
     var html = $($('.sect').get(2)).html();
-    output.html = (0, _striptags2.default)(html, ['h3', 'a', 'br']).replace(/\<br[^\>|]*\>/ig, "\n");
+    output.html = (0, _striptags2.default)(html, ['a', 'br']).replace(/\<br[^\>|]*\>/ig, "\n");
 
     return output;
   });

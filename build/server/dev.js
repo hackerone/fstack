@@ -24,7 +24,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var compiler = (0, _webpack2.default)(_webpack4.default);
 var cdn = '/client/';
-var indexView = '<!DOCTYPE html>\n<html>\n  <head>\n    <meta charset="utf-8">\n    <title>Prop Search</title>\n    <link rel="stylesheet" href="[main.css]" media="screen" />\n  </head>\n  <body>\n    <script src="[main.js]"></script>\n  </body>\n</html>\n'.replace('[main.js]', cdn + 'app.js').replace('[main.css]', cdn + 'app.css');
+var indexView = '<!DOCTYPE html>\n<html>\n  <head>\n    <meta charset="utf-8">\n    <title>Prop Search</title>\n    <meta name="viewport" content="width=device-width, initial-scale=1">\n    <link rel="stylesheet" href="[main.css]" media="screen" />\n  </head>\n  <body>\n    <script src="[main.js]"></script>\n  </body>\n</html>\n'.replace('[main.js]', cdn + 'app.js').replace('[main.css]', cdn + 'app.css');
 
 _app2.default.get('/', function (req, res) {
   res.send(indexView);
