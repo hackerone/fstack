@@ -1,4 +1,4 @@
-import { fromGlobalId } from 'graphql-relay';
+import { fromGlobalId, nodeDefinitions } from 'graphql-relay';
 
 const types = {};
 const resolvers = {};
@@ -24,3 +24,8 @@ export const idFetcher = (globalId) => {
 };
 
 export const typeResolver = (obj) => types[obj.type];
+
+
+export const { nodeInterface, nodeField } = nodeDefinitions(
+  idFetcher, typeResolver
+);

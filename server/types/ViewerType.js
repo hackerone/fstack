@@ -8,12 +8,12 @@ import {
   connectionArgs,
 } from 'graphql-relay';
 import { connectionFromMongooseCursor } from 'lib/mongooseConnection';
-import { nodeInterface } from '../node';
-import Property from 'models/Property';
-import PropertyType from 'types/PropertyType';
-import { registerType } from 'lib/registry';
+import { nodeInterface, registerType } from 'lib/nodeRegistry';
 
-const {connectionType: PropertyConnection} = connectionDefinitions({nodeType: PropertyType});
+import Bucket from 'models/Bucket';
+import BucketType from 'types/BucketType';
+
+const { connectionType: BucketConnection } = connectionDefinitions({ nodeType: BucketType });
 
 const ViewerType = new GraphQLObjectType({
   name: 'Viewer',
@@ -21,11 +21,11 @@ const ViewerType = new GraphQLObjectType({
   fields: () => ({
     id: globalIdField('Viewer'),
     name: { type: GraphQLString },
-    properties: {
-      type: PropertyConnection,
+    buckets: {
+      type: BucketConnection,
       args: { ...connectionArgs },
       resolve: (root, args) => connectionFromMongooseCursor(
-        Property.where({}).sort({ create_date: -1 }),
+        Bucket.where({}).sort({ create_date: -1 }),
         args
       ),
     },
@@ -35,13 +35,13 @@ const ViewerType = new GraphQLObjectType({
 export const getViewer = (id) => {
   return {
     id: 1,
-    name: 'Ganesh'
+    name: 'Ganesh',
   };
 };
 
 export const ViewerQuery = {
   type: ViewerType,
-  resolve: () => getViewer()
+  resolve: () => getViewer(),
 };
 
 export default registerType(ViewerType, getViewer);

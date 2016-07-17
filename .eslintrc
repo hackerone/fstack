@@ -1,4 +1,9 @@
 {
   "parser": "babel-eslint",
-  "extends": "airbnb"
+  "extends": "airbnb",
+  "settings": {
+    "import/resolver": {
+      "babel-module-alias": {}
+    }
+  }
 }

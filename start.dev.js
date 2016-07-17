@@ -1,2 +1,4 @@
 require('babel-register');
-require('./server/dev.js');
+var app = require('./server/app.js');
+require('./server/lib/webpackdev.js')(app);
+app.start();

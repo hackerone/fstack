@@ -7,7 +7,7 @@ import {
 import {
   globalIdField,
 } from 'graphql-relay';
-import { nodeInterface } from '../node';
+import { nodeInterface } from 'lib/nodeRegistry';
 import Property from 'models/Property';
 import { registerType } from 'lib/registry';
 

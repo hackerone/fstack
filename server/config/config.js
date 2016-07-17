@@ -1,13 +1,11 @@
-let PREFIX = '';
+import * as prodConfig from './prod';
+import * as devConfig from './dev';
 
-if (process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
-  PREFIX = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ':' +
-  process.env.OPENSHIFT_MONGODB_DB_PASSWORD + '@';
+let config = {};
+if(process.env.NODE_ENV === 'production') {
+  config = prodConfig;
+} else {
+  config = devConfig;
 }
 
-const HOST = process.env.OPENSHIFT_MONGODB_DB_HOST || 'localhost';
-const PORT = process.env.OPENSHIFT_MONGODB_DB_PORT || '27017';
-const DB = 'propsearch';
-
-const connectionURL = `mongodb://${PREFIX}${HOST}:${PORT}/${DB}`;
-export { connectionURL };
+export default config;
